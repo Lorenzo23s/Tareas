@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de gestión de trabajadores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h2>Gestión de trabajadores</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <input type="email" class="form-control" id="correo">
+                    </div>
+                    <div class="form-group">
+                        <label for="departamento">Departamento</label>
+                        <select class="form-control" id="departamento">
+                            <option>IT</option>
+                            <option>Marketing</option>
+                            <option>Ventas</option>
+                            <option>Administración</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                <ul class="list-group" id="lista-trabajadores">
+                    
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h2>Resumen de trabajadores</h2>
+                <p id="resumen-trabajadores">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>document.querySelector('form').addEventListener('submit', function(event) {
+        
+        event.preventDefault();
+
+        
+        var nombre = document.querySelector('#nombre').value;
+        var apellido = document.querySelector('#apellido').value;
+        var correo = document.querySelector('#correo').value;
+        var departamento = document.querySelector('#departamento').value;
+
+       
+        var trabajador = {
+            nombre: nombre,
+            apellido: apellido,
+            correo: correo,
+            departamento: departamento
+        };
+
+       
+        var listaTrabajadores = document.querySelector('#lista-trabajadores');
+        var nuevoTrabajador = document.createElement('li');
+        nuevoTrabajador.textContent = trabajador.nombre + ' ' + trabajador.apellido + ', ' + trabajador.correo + ', ' + trabajador.departamento;
+        nuevoTrabajador.classList.add('list-group-item');
+        listaTrabajadores.appendChild(nuevoTrabajador);
+
+       
+        var resumenTrabajadores = document.querySelector('#resumen-trabajadores');
+        resumenTrabajadores.textContent = 'Hay ' + listaTrabajadores.children.length + ' trabajador(es) en la lista.';
+    });
+</script>
+</body>
+</body>
+</html>
